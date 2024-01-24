@@ -51,4 +51,11 @@ public class EmployeeTest {
         employee.setPaid(true);
         assertTrue(employee.isPaid());
     }
+
+    @Test
+    @DisplayName("Testing if toString works")
+    void testingIfToStringWorks() {
+        Employee employee = new Employee("123", 50000.0);
+        assertEquals("Employee [id=123, salary=50000.0]", employee.toString());
+    }
 }
