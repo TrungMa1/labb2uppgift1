@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 public class EmployeeTest {
 
@@ -35,5 +36,12 @@ public class EmployeeTest {
         Employee employee = new Employee("123", 50000.0);
         employee.setSalary(60000.0);
         assertEquals(60000.0, employee.getSalary(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Testing is paid")
+    void testingIsPaid() {
+        Employee employee = new Employee("123", 50000.0);
+        assertFalse(employee.isPaid());
     }
 }
