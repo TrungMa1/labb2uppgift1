@@ -23,9 +23,17 @@ public class EmployeeTest {
     }
 
     @Test
-    @DisplayName("Testing get Salary")
+    @DisplayName("Testing get salary")
     void testingGetSalary() {
         Employee employee = new Employee("123", 50000.0);
         assertEquals(50000.0, employee.getSalary(), 0.001);
+    }
+
+    @Test
+    @DisplayName("Testing set salary")
+    void testingSetSalary() {
+        Employee employee = new Employee("123", 50000.0);
+        employee.setSalary(60000.0);
+        assertEquals(60000.0, employee.getSalary(), 0.001);
     }
 }
