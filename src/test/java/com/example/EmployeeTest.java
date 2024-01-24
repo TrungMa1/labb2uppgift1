@@ -3,8 +3,7 @@ package com.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.*;
 
 public class EmployeeTest {
 
@@ -43,5 +42,13 @@ public class EmployeeTest {
     void testingIsPaid() {
         Employee employee = new Employee("123", 50000.0);
         assertFalse(employee.isPaid());
+    }
+
+    @Test
+    @DisplayName("Testing set paid")
+    void testingSetPaid() {
+        Employee employee = new Employee("123", 50000.0);
+        employee.setPaid(true);
+        assertTrue(employee.isPaid());
     }
 }
