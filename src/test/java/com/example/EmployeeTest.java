@@ -21,4 +21,11 @@ public class EmployeeTest {
         employee.setId("456");
         assertEquals("456", employee.getId());
     }
+
+    @Test
+    @DisplayName("Testing get Salary")
+    void testingGetSalary() {
+        Employee employee = new Employee("123", 50000.0);
+        assertEquals(50000.0, employee.getSalary(), 0.001);
+    }
 }
