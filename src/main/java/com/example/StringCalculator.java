@@ -12,6 +12,7 @@ public class StringCalculator {
         System.out.println(Add("1,2,3,4,5"));
         System.out.println(Add("1\n2\n3"));
         System.out.println(Add("//;\n1;2"));
+        System.out.println(Add("2,1001"));
 
         try {
             System.out.println(Add("1,-2,3,-4"));
@@ -46,8 +47,9 @@ public class StringCalculator {
                         negativeNumbers.append(", ");
                     }
                     negativeNumbers.append(parsedNum);
+                } else if (parsedNum <= 1000) {
+                    sum += parsedNum;
                 }
-                sum += parsedNum;
             }
 
             if (!negativeNumbers.isEmpty()) {

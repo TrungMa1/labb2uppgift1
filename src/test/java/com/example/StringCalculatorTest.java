@@ -47,4 +47,10 @@ class StringCalculatorTest {
 
         assertEquals("Negatives not allowed: -2, -4", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Testing if it works with numbers bigger than 1000")
+    void testingIfItWorksWithNumbersBiggerThan1000() {
+        assertEquals(2, StringCalculator.Add("2,1001"));
+    }
 }
