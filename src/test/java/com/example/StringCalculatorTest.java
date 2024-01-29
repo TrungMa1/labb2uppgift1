@@ -22,6 +22,12 @@ class StringCalculatorTest {
     @Test
     @DisplayName("Testing if it works with multiple numbers")
     void testingIfItWorksWithMultipleNumbers() {
-        assertEquals(16, StringCalculator.Add("3,8,5"));
+        assertEquals(15, StringCalculator.Add("1,2,3,4,5"));
+    }
+
+    @Test
+    @DisplayName("Testing numbers with a new line")
+    void testingNumbersWithANewLine() {
+        assertEquals(6, StringCalculator.Add("1\n2\n3"));
     }
 }
