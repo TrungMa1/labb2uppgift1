@@ -3,6 +3,7 @@ package com.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertThrows;
 import static org.testng.Assert.assertEquals;
 
 class StringCalculatorTest {
@@ -35,5 +36,15 @@ class StringCalculatorTest {
     @DisplayName("Testing all kinds of delimiters")
     void testingAllKindsOfDelimiters() {
         assertEquals(3, StringCalculator.Add("//;\n1;2"));
+    }
+
+    @Test
+    @DisplayName("Testing with negativ numbers")
+    void testingWithNegativNumbers() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            StringCalculator.Add("1,-2,3,-4");
+        });
+
+        assertEquals("Negatives not allowed: -2, -4", exception.getMessage());
     }
 }
