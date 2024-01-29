@@ -30,4 +30,10 @@ class StringCalculatorTest {
     void testingNumbersWithANewLine() {
         assertEquals(6, StringCalculator.Add("1\n2\n3"));
     }
+
+    @Test
+    @DisplayName("Testing all kinds of delimiters")
+    void testingAllKindsOfDelimiters() {
+        assertEquals(3, StringCalculator.Add("//;\n1;2"));
+    }
 }
