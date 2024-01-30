@@ -13,6 +13,7 @@ public class StringCalculator {
         System.out.println(Add("//;\n1;2"));
         System.out.println(Add("2,1001"));
         System.out.println(Add("//[***]\n1***2***3"));
+        System.out.println(Add("//[*][%]\n1*2%3"));
 
         try {
             System.out.println(Add("1,-2,3,-4"));
@@ -27,11 +28,11 @@ public class StringCalculator {
         } else {
             String delimiter = ",|\n";
 
-            Pattern pattern = Pattern.compile("//(\\[.*?\\]|.)(?:\\n(.*))?");  // Updated regex
+            Pattern pattern = Pattern.compile("//(\\[.*?\\]|.)(?:\\n(.*))?");
             Matcher matcher = pattern.matcher(numbers);
 
             if (matcher.matches()) {
-                delimiter = Pattern.quote(matcher.group(1));
+                delimiter = parseDelimiters(matcher.group(1));
                 numbers = matcher.group(2);
             }
 
@@ -62,5 +63,24 @@ public class StringCalculator {
 
             return sum;
         }
+    }
+
+    private static String parseDelimiters(String delimiterGroup) {
+        StringBuilder delimiters = new StringBuilder();
+        Pattern delimiterPattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = delimiterPattern.matcher(delimiterGroup);
+
+        while (matcher.find()) {
+            if (delimiters.length() > 0) {
+                delimiters.append("|");
+            }
+            delimiters.append(Pattern.quote(matcher.group(1)));
+        }
+
+        if (delimiters.length() == 0) {
+            return Pattern.quote(delimiterGroup);
+        }
+
+        return delimiters.toString();
     }
 }
