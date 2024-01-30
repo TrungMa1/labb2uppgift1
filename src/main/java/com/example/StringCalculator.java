@@ -14,6 +14,7 @@ public class StringCalculator {
         System.out.println(Add("2,1001"));
         System.out.println(Add("//[***]\n1***2***3"));
         System.out.println(Add("//[*][%]\n1*2%3"));
+        System.out.println(Add("//[**][%%]\n1**2%%3"));
 
         try {
             System.out.println(Add("1,-2,3,-4"));

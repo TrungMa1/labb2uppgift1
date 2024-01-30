@@ -65,4 +65,10 @@ class StringCalculatorTest {
     void testingDelimitersWithMultipleCharacters() {
         assertEquals(6, StringCalculator.Add("//[*][%]\n1*2%3"));
     }
+
+    @Test
+    @DisplayName("Testing delimiters with multiple characters and longer lenght")
+    void testingDelimitersWithMultipleCharactersAndLongerLenght() {
+        assertEquals(6, StringCalculator.Add("//[**][%%]\n1**2%%3"));
+    }
 }
