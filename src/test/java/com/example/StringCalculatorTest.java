@@ -53,4 +53,10 @@ class StringCalculatorTest {
     void testingIfItWorksWithNumbersBiggerThan1000() {
         assertEquals(2, StringCalculator.Add("2,1001"));
     }
+
+    @Test
+    @DisplayName("Testing delimiters of any lenght")
+    void testingDelimitersOfAnyLenght() {
+        assertEquals(0, StringCalculator.Add("//[***]\n1***2***3"));
+    }
 }
