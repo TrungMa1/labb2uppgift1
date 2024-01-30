@@ -44,4 +44,25 @@ public class EmployeesTest {
         verify(employeeRepository, times(1)).findAll();
         verify(bankService, times(2)).pay(anyString(), anyDouble());
     }
+
+    @Test
+    @DisplayName("Testing if unpaid employees are handled correctly")
+    void testingIfUnpaidEmployeesAreHandledCorrectly() {
+        List<Employee> employeesList = Arrays.asList(
+                new Employee("1", 50000.0),
+                new Employee("2", 60000.0)
+        );
+
+        when(employeeRepository.findAll()).thenReturn(employeesList);
+        when(bankService.pay(anyString(), anyDouble()))
+                .thenReturn(true)
+                .thenThrow(new RuntimeException("Payment failed"));
+
+        int payments = employees.payEmployees();
+
+        assertEquals(1, payments);
+
+        verify(employeeRepository, times(1)).findAll();
+        verify(bankService, times(2)).pay(anyString(), anyDouble());
+    }
 }
